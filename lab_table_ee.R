@@ -1,25 +1,4 @@
-library( azcore )
-library(entimice)
-entimice <- eride::eride_connect(instance= "prod")
-
-eride::eride_clone(paths = "root/cdar/d000/d000_r_initiative/ar/r_initiative/common")
-
-files <- c("root/cdar/d000/d000_r_initiative/ar/r_initiative/common/work_kgwc789_eride/program/lb_table.r", 
-           "root/cdar/d000/d000_r_initiative/ar/r_initiative/common/work_kgwc789_eride/data/data_area/deid_rslb.sas7bdat")
-
-eride::eride_fetch(paths=files, connection = entimice)
-
-#sample output
-# eride EntimICE connection to EntimICE-AZ Production (connected as kgwc789)
-# Fetching file root/cdar/d000/d000_r_initiative/ar/r_initiative/common/work_kgwc789_eride/data/data_area/deid_rslb.sas7bdat (1 of 2)  ... OK
-# Fetching file root/cdar/d000/d000_r_initiative/ar/r_initiative/common/work_kgwc789_eride/program/lb_table.r (2 of 2)  ... OK
-
-
-
-#change the working directory as needed, example below
 #setwd ("/scratch/kgwc789/entimice/root/cdar/d000/d000_r_initiative/ar/r_initiative/common/work_kgwc789_eride/program")
-
-#open lb_table.r(needs to created in entimice first before fetch)
 
 #Load packages 
 library(azcore)
@@ -28,7 +7,7 @@ library(dplyr)
 library(r2rtf)
 
 #get file(refer to the fetch location in SCP)
-fs <- "/scratch/kgwc789/entimice/root/cdar/d000/d000_r_initiative/ar/r_initiative/common/work_kgwc789_eride/data/data_area/"
+fs <- "data_area/"
 #get lab data
 rslbl <- haven::read_sas( paste0(fs, "/deid_rslb.sas7bdat"))
 #get adsl data(fetch adsl data if needed)
